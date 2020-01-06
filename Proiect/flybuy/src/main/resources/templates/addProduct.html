@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+
+    <title>Save Product</title>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h3>Product Data</h3>
+    <hr>
+
+    <p class="h4 mb-4">Save Product</p>
+
+
+    <form action="#" th:action="@{/products/save}" th:object="${product}" method="POST">
+
+        <!-- Add hidden form field to handle update -->
+<!--        <input type="hidden" th:field="*{productId}" />-->
+        <input type="text" th:field="*{name}" class="form-control mb-4 col-4" placeholder="Product Name">
+        <input type="text" th:field="*{category}" class="form-control mb-4 col-4" placeholder="Category">
+        <input type="text" th:field="*{price}" class="form-control mb-4 col-4" placeholder="Price">
+        <input type="text" th:field="*{description}" class="form-control mb-4 col-4" placeholder="Description">
+
+        <button type="submit" class="btn btn-info col-2">Save</button>
+
+    </form>
+
+    <hr>
+    <a th:href="@{/products/all}">Back to user list</a>
+
+</div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+

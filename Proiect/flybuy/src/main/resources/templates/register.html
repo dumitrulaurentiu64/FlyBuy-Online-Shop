@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+
+    <title>Save User</title>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h3>User Data</h3>
+    <hr>
+
+    <p class="h4 mb-4">Save user</p>
+
+
+    <form action="#" th:action="@{/users/save}" th:object="${user}" method="POST">
+
+        <!-- Add hidden form field to handle update -->
+        <input type="hidden" th:field="*{userId}" />
+        <input type="text" th:field="*{name}" class="form-control mb-4 col-4" placeholder="Username">
+        <input type="text" th:field="*{address}" class="form-control mb-4 col-4" placeholder="Address">
+        <input type="text" th:field="*{age}" class="form-control mb-4 col-4" placeholder="Age">
+
+        <button type="submit" class="btn btn-info col-2">Save</button>
+
+    </form>
+
+    <hr>
+    <a th:href="@{/users/all}">Back to user list</a>
+
+</div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+
+    <title>All users</title>
+</head>
+
+<body>
+
+<div class="container" >
+    <h3>All Users</h3>
+    <hr>
+    <a th:href="@{/users/register}"
+       class="btn btn-success btn-sm ml-2 mr-2"> Add User </a>
+    <a th:href="@{/products/all}"
+       class="btn btn-success btn-sm ml-2 mr-2"> All Products </a>
+    <br><br>
+
+
+    <table class="table table-bordered table-striped">
+
+        <thead class="thead-dark">
+        <tr>
+            <th>Username</th>
+            <th>User age</th>
+            <th>User address</th>
+            <th >Products</th>
+            <th >Options</th>
+        </tr>
+        </thead>
+            <div th:each="tempUser : ${usersList}">
+        <tr>
+
+            <td th:text="${tempUser.name}"></td>
+            <td th:text="${tempUser.age}"></td>
+            <td th:text="${tempUser.address}"></td>
+<!--            <td th:text="${tempUser.getProductsToString()}">-->
+            <td>
+                <p th:each="tempProduct : ${tempUser.products}", th:text="${tempProduct.toString()}"></p>
+<!--            <td th:each="tempProduct : ${tempUser.products}", th:text="${tempProduct.toString()}">-->
+
+            </td>
+            <td>
+                <div class="row">
+
+                    <div class="col-sm">
+                    <form action="#" th:action="@{/products/addProductToUser}" method="GET">
+                        <input type="hidden" name="userId"
+                               th:value="${tempUser.userId}" />
+                        <button type="submit" class="btn btn-success btn-sm ml-2 mr-2">
+                             Add Product
+                        </button>
+                    </form>
+                    </div>
+
+                    <div class="col-sm">
+                        <form action="#" th:action="@{/users/removeUserProducts}" method="GET">
+                            <input type="hidden" name="userId"
+                                   th:value="${tempUser.userId}" />
+                            <button type="submit" class="btn btn-primary btn-sm ml-2 mr-2">
+                                Remove Product From User
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="col-sm">
+                        <form action="#" th:action="@{/users/delete}" method="POST">
+                        <input type="hidden" name="userId"
+                               th:value="${tempUser.userId}" />
+                        <button type="submit" class="btn btn-danger btn-sm ml-2 mr-2">
+                            Delete User
+                        </button>
+                    </form>
+                    </div>
+
+                </div>
+            </td>
+        </tr>
+        </div>
+    </table>
+
+</div>
+</body>
+</html>
+
+
+

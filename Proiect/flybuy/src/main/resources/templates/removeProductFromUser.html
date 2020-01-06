@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <title>All products</title>
+</head>
+
+<body>
+
+
+<div class="container" style="width:100%; background:#F2F2F2">
+    <h3>Products</h3>
+    <hr>
+
+    <table class="table table-bordered table-striped">
+
+        <thead class="thead-dark">
+        <tr>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Delete products</th>
+        </tr>
+        </thead>
+        <div th:each="tempProduct : ${productsList}">
+            <tr>
+
+                <td th:text="${tempProduct.name}"></td>
+                <td th:text="${tempProduct.category}"></td>
+                <td th:text="${tempProduct.price}"></td>
+                <td th:text="${tempProduct.description}"></td>
+                <td>
+                    <form action="#" th:action="@{/users/deleteProduct}" method="POST">
+                        <input  type="hidden" name="userId"
+                                th:value="${userId}" />
+                        <input  type="hidden" name="productName"
+                                th:value="${tempProduct.getName()}" />
+                        <button type="submit" class="btn btn-primary btn-sm ml-2 mr-2">
+                            Delete this item from the basket
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        </div>
+    </table>
+
+</div>
+</body>
+</html>
+
+
+
