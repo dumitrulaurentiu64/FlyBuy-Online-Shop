@@ -8,6 +8,7 @@ import pssc.flybuy.entities.Product;
 import pssc.flybuy.entities.User;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 @RunWith(SpringRunner.class)
 public class EntitiesTests {
@@ -33,13 +34,13 @@ public class EntitiesTests {
     public void testUser(){
         User user = new User();
         user.setAddress("B-dul Eroilor de la Tisa, bl.10-12, apt.11");
-        user.setAge(21);
-        user.setName("Lau");
+        user.setAge(23);
+        user.setName("Mihaela");
         user.setProducts(new ArrayList<>());
 
         Assert.assertEquals("B-dul Eroilor de la Tisa, bl.10-12, apt.11", user.getAddress());
-        Assert.assertEquals("Lau", user.getName());
-        Assert.assertEquals(java.util.Optional.of(21), user.getAge());
-        Assert.assertEquals(null, user.getProducts());
+        Assert.assertEquals("Mihaela", user.getName());
+        Assert.assertEquals(java.util.Optional.of(23), Optional.ofNullable(user.getAge()));
+        Assert.assertEquals(new ArrayList<>(), user.getProducts());
     }
 }

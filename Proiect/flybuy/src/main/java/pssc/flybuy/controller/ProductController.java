@@ -55,24 +55,6 @@ public class ProductController {
         return "redirect:all";
     }
 
-//    @GetMapping("/recommended")
-//    public List<Hotel> getRecommended(){
-//        final int maxPrice = 100;
-//        final int minRating = 7;
-//
-//        // create a query class (QHotel)
-//        QHotel qHotel = new QHotel("hotel");
-//
-//        // using the query class we can create the filters
-//        BooleanExpression filterByPrice = qHotel.pricePerNight.lt(maxPrice);
-//        BooleanExpression filterByRating = qHotel.reviews.any().rating.gt(minRating);
-//
-//        // we can then pass the filters to the findAll() method
-//        List<Hotel> hotels = (List<Hotel>) this.hotelRepository.findAll(filterByPrice.and(filterByRating));
-//
-//        return hotels;
-//    }
-
     @PostMapping("/removeProduct")
     public String deleteUser(@RequestParam("productId") String productId) {
 
