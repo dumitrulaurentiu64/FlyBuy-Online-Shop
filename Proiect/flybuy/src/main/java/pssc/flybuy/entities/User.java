@@ -15,6 +15,8 @@ public class User {
     @Id
     private String userId;
     private String name;
+    private boolean messageReceived;
+    private Integer messageCount = 0;
 
     public void setAddress(String address) {
         this.address = address;
@@ -80,5 +82,20 @@ public class User {
         this.userId = userId;
     }
 
+    public boolean isMessageReceived() {
+        return messageReceived;
+    }
+
+    public void setMessageReceived(boolean messageReceived) {
+        this.messageReceived = messageReceived;
+    }
+
+    public Integer getMessageCount() {
+        return messageCount;
+    }
+
+    public void setMessageCount(Integer messageCount) {
+        this.messageCount = messageCount;
+    }
 }
 

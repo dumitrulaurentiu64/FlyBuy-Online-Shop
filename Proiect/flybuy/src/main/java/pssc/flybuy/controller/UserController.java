@@ -1,6 +1,7 @@
 package pssc.flybuy.controller;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -8,6 +9,7 @@ import pssc.flybuy.repositories.ProductRepository;
 import pssc.flybuy.repositories.UserRepository;
 import pssc.flybuy.entities.Product;
 import pssc.flybuy.entities.User;
+import pssc.flybuy.services.UserService;
 
 import java.util.Iterator;
 import java.util.List;
@@ -19,10 +21,19 @@ public class UserController {
     private UserRepository userRepository;
     private ProductRepository productRepository;
 
+    @Autowired
+    private UserService userService;
+
     public UserController(UserRepository userRepository, ProductRepository productRepository) {
         this.userRepository = userRepository;
         this.productRepository = productRepository;
     }
+
+
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
+
 
     @GetMapping("/all")
     public String getAll(Model model) {
@@ -163,17 +174,12 @@ public class UserController {
 
     }
 
-    //    @GetMapping("/age/{maxAge}")
-////    public List<User> getByCategory(@PathVariable("maxAge") Integer maxAge) {
-////        return this.userRepository.findByAgeLessThan(maxAge);
-////    }
-////
-////    @GetMapping("/address/{city}")
-////    public List<User> getByCity(@PathVariable("city") String city) {
-////        List<User> users = this.userRepository.findByCity(city);
-////
-////
-////        return users;
-////    }
+    @GetMapping("/getDiscounts")
+    public String indexProduct(){
+        String stupidString = "argh";
+        userService.sendUserMessage(stupidString);
+        return "redirect:all";
+    }
+
 
 }

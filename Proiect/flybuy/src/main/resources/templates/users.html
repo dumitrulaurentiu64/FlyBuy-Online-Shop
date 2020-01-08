@@ -23,12 +23,18 @@
 <div class="container" >
     <h3>All Users</h3>
     <hr>
-    <a th:href="@{/users/register}"
-       class="btn btn-success btn-sm ml-2 mr-2"> Add User </a>
-    <a th:href="@{/products/all}"
-       class="btn btn-success btn-sm ml-2 mr-2"> All Products </a>
-    <br><br>
-
+    <div class="row">
+        <a th:href="@{/users/register}"
+           class="btn btn-success btn-sm ml-2 mr-2"> Add User </a>
+        <a th:href="@{/products/all}"
+           class="btn btn-success btn-sm ml-2 mr-2"> All Products </a>
+        <form action="#" th:action="@{/users/getDiscounts}" method="GET">
+            <button type="submit" class="btn btn-primary btn-sm ml-2 mr-2">
+                Send e-mails to users with available discounts
+            </button>
+        </form>
+    </div>
+    <br>
 
     <table class="table table-bordered table-striped">
 
@@ -37,8 +43,9 @@
             <th>Username</th>
             <th>User age</th>
             <th>User address</th>
-            <th >Products</th>
-            <th >Options</th>
+            <th>Products</th>
+            <th>Users Inbox</th>
+            <th>Options</th>
         </tr>
         </thead>
             <div th:each="tempUser : ${usersList}">
@@ -53,6 +60,9 @@
 <!--            <td th:each="tempProduct : ${tempUser.products}", th:text="${tempProduct.toString()}">-->
 
             </td>
+
+            <td th:text="${tempUser.messageCount}"></td>
+
             <td>
                 <div class="row">
 
@@ -88,6 +98,7 @@
 
                 </div>
             </td>
+
         </tr>
         </div>
     </table>
